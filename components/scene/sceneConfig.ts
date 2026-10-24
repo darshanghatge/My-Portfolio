@@ -96,68 +96,38 @@ export const sceneConfig: {
   },
   mobile: {
     hero: {
-<<<<<<< HEAD
       position: [0.72, 1.92, -1.35],
       scale: 1.18,
-=======
-      position: [0.75, 1.4, -1.1],
-      scale: 1.38,
->>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
       twist: 1.5,
       lightAngle: 0.6,
     },
     about: {
-<<<<<<< HEAD
       position: [-0.65, 1.85, -1.35],
       scale: 1.18,
-=======
-      position: [-0.75, 1.35, -1.1],
-      scale: 1.38,
->>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
       twist: 1.5,
       lightAngle: 1.2,
     },
     projects: {
-<<<<<<< HEAD
       position: [0.72, 1.85, -1.35],
       scale: 1.18,
-=======
-      position: [0.8, 1.3, -1.1],
-      scale: 1.32,
->>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
       twist: 1.5,
       lightAngle: 1.8,
     },
     skills: {
-<<<<<<< HEAD
       position: [0.0, 1.55, -1.45],
       scale: 1.3,
-=======
-      position: [0.0, 1.35, -1.3],
-      scale: 1.44,
->>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
       twist: 1.5,
       lightAngle: 2.4,
     },
     experience: {
-<<<<<<< HEAD
       position: [-0.65, 1.85, -1.35],
       scale: 1.18,
-=======
-      position: [-0.75, 1.3, -1.1],
-      scale: 1.38,
->>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
       twist: 1.5,
       lightAngle: 0.2,
     },
     contact: {
-<<<<<<< HEAD
       position: [0.65, 1.88, -1.35],
       scale: 1.18,
-=======
-      position: [0.7, 1.4, -0.9],
-      scale: 1.44,
->>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
       twist: 1.5,
       lightAngle: 0.9,
     },

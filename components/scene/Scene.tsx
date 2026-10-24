@@ -1,10 +1,6 @@
 "use client";
 
-<<<<<<< HEAD
 import React, { useRef, useEffect, useMemo, useState, useSyncExternalStore } from "react";
-=======
-import React, { useRef, useEffect, useMemo, useSyncExternalStore } from "react";
->>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
 import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { sceneConfig, SectionId } from "./sceneConfig";
@@ -389,23 +385,16 @@ function World({
   const ribbonGeometry = useMemo(() => createRibbonShellGeometry(), []);
 
   // Photorealistic Real Earth Textures (Genuine NASA Satellite Imagery)
-<<<<<<< HEAD
   const [earthTextures, setEarthTextures] = useState<ReturnType<
     typeof buildRealEarthTextures
   > | null>(null);
 
   useEffect(() => {
     const textures = buildRealEarthTextures(() => {
-=======
-  const earthTextures = useMemo(() => {
-    if (typeof document === "undefined") return null;
-    return buildRealEarthTextures(() => {
->>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
       if (planetShaderRef.current) {
         planetShaderRef.current.needsUpdate = true;
       }
     });
-<<<<<<< HEAD
     setEarthTextures(textures);
 
     return () => {
@@ -415,20 +404,6 @@ function World({
   }, []);
 
   useEffect(() => {
-=======
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      if (earthTextures) {
-        earthTextures.dayTexture.dispose();
-        earthTextures.nightTexture.dispose();
-      }
-    };
-  }, [earthTextures]);
-
-  useEffect(() => {
->>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
     if (planetShaderRef.current && earthTextures) {
       planetShaderRef.current.uniforms.uDayMap.value = earthTextures.dayTexture;
       planetShaderRef.current.uniforms.uNightMap.value = earthTextures.nightTexture;
