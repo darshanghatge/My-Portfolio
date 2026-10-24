@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SceneCanvas } from "@/components/scene/SceneCanvas";
+<<<<<<< HEAD
 import { DecodeLoader } from "@/components/loader/DecodeLoader";
+=======
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,12 +33,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+<<<<<<< HEAD
       className={`${geistSans.variable} ${jetbrainsMono.variable} h-full antialiased dark`}
     >
       <body className={`${jetbrainsMono.variable} min-h-full flex flex-col bg-[#050816] text-zinc-100 relative selection:bg-pink-500/30 selection:text-white overflow-x-hidden`}>
         {/* Full-screen intro loader mounted as first child of body */}
         <DecodeLoader />
 
+=======
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
+    >
+      <body className="min-h-full flex flex-col bg-[#050816] text-zinc-100 relative selection:bg-pink-500/30 selection:text-white overflow-x-hidden">
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
         {/* Mount SceneCanvas ONCE as a fixed full-screen layer behind everything (z-0, pointer-events: none) */}
         <SceneCanvas />
 

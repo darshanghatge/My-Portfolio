@@ -143,10 +143,17 @@ export function SectionIndicator() {
   return (
     <nav
       aria-label="Section navigation"
+<<<<<<< HEAD
       className="relative px-1.5 min-[380px]:px-2.5 sm:px-6 py-1 sm:py-2 rounded-xl bg-black/45 backdrop-blur-md border border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.08)] flex flex-col items-center w-full max-w-xl select-none"
     >
       {/* Top row: Uppercase Section Labels */}
       <div className="flex items-center justify-between w-full gap-0.5 sm:gap-2 md:gap-4">
+=======
+      className="relative px-3 sm:px-6 py-1.5 sm:py-2 rounded-xl bg-black/45 backdrop-blur-md border border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.08)] flex flex-col items-center w-full max-w-xl select-none"
+    >
+      {/* Top row: Uppercase Section Labels */}
+      <div className="flex items-center justify-between w-full gap-1 sm:gap-3 md:gap-4">
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
         {SECTIONS.map((sec, idx) => {
           const isActive = activeSection === sec.id;
           return (
@@ -158,7 +165,11 @@ export function SectionIndicator() {
               onClick={() => scrollToSection(sec.id)}
               aria-current={isActive ? "true" : undefined}
               aria-label={`Scroll to ${sec.label}`}
+<<<<<<< HEAD
               className={`group flex items-center justify-center py-0.5 px-0.5 min-[380px]:px-1 sm:px-1.5 rounded transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 ${
+=======
+              className={`group flex items-center justify-center py-0.5 px-1 sm:px-1.5 rounded transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400 ${
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
                 isActive
                   ? "text-white font-bold drop-shadow-[0_0_10px_rgba(6,182,212,0.9)]"
                   : "text-zinc-400 hover:text-cyan-200"
@@ -168,7 +179,11 @@ export function SectionIndicator() {
                 ref={(el) => {
                   labelRefs.current[idx] = el;
                 }}
+<<<<<<< HEAD
                 className="font-mono text-[8.5px] min-[360px]:text-[9.5px] min-[400px]:text-[10px] sm:text-[11px] md:text-xs uppercase tracking-tight min-[380px]:tracking-wider sm:tracking-[0.16em] transition-colors"
+=======
+                className="font-mono text-[10px] sm:text-[11px] md:text-xs uppercase tracking-wider sm:tracking-[0.16em] transition-colors"
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
               >
                 {sec.id === "hero" ? (
                   "HOME"

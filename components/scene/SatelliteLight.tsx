@@ -37,7 +37,10 @@ export function SatelliteLight({
   const satelliteRef = useRef<THREE.Group>(null);
   const strobeRef = useRef<THREE.Mesh>(null);
   const pointLightRef = useRef<THREE.PointLight>(null);
+<<<<<<< HEAD
   const trailLineRef = useRef<THREE.Line>(null);
+=======
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
   const angleRef = useRef<number>(initialAngle);
 
   // 1. Orbital Trajectory Guide Ring (Subtle glowing circle)
@@ -113,6 +116,7 @@ export function SatelliteLight({
     }
 
     // Update trailing starlight points
+<<<<<<< HEAD
     const posAttr = trailLineRef.current?.geometry.attributes
       .position as THREE.BufferAttribute | undefined;
     if (posAttr) {
@@ -130,6 +134,22 @@ export function SatelliteLight({
       }
       posAttr.needsUpdate = true;
     }
+=======
+    const posAttr = trailGeometry.attributes.position as THREE.BufferAttribute;
+    const trailSpan = 0.45; // Length of the glowing trail in radians (~25 degrees of orbit)
+
+    for (let i = 0; i < TRAIL_POINTS; i++) {
+      const t = (i / (TRAIL_POINTS - 1));
+      const trailAngle = a - (1.0 - t) * trailSpan;
+      posAttr.setXYZ(
+        i,
+        Math.cos(trailAngle) * orbitRadius,
+        0,
+        Math.sin(trailAngle) * orbitRadius
+      );
+    }
+    posAttr.needsUpdate = true;
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
 
     // Blinking navigation beacon (periodic strobe flash every 1.2s)
     const time = state.clock.getElapsedTime();
@@ -153,7 +173,11 @@ export function SatelliteLight({
       <primitive object={trajectoryLineObject} />
 
       {/* ── Streaming Starlight Trail ── */}
+<<<<<<< HEAD
       <primitive ref={trailLineRef} object={trailLineObject} />
+=======
+      <primitive object={trailLineObject} />
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
 
       {/* ── 3D Satellite Vehicle ── */}
       <group ref={satelliteRef}>

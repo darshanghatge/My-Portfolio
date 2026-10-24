@@ -17,9 +17,13 @@ export function ScreenshotHeading() {
   const targetDimsRef = useRef({ width: 672, height: 160 });
   const [targetDimensions, setTargetDimensions] = useState({ width: 672, height: 160 });
 
+<<<<<<< HEAD
 
 
   const LINE_1 = "Hi, I'm";
+=======
+  const LINE_1 = "Hi, Im";
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
   const LINE_2 = "Darshan Ghatge.";
 
   // Measure container dimensions for accurate Figma-style size badge
@@ -49,13 +53,28 @@ export function ScreenshotHeading() {
 
   // 1. BUTTERY-SMOOTH GPU EXPANSION SEQUENCE (Zero React re-renders during drag)
   const runSequence = () => {
+<<<<<<< HEAD
     // Initial short pause before snipping begins (350ms)
+=======
+    setIsOpened(false);
+    setIsCompleted(false);
+    setTypedLine1(0);
+    setTypedLine2(0);
+    setActiveLine(1);
+    setIsTyping(false);
+
+    // Initial short pause before snipping begins (200ms)
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
     const openTimer = setTimeout(() => {
       setIsOpened(true);
 
       // Direct-DOM real-time dimension update (no React re-renders!)
       const start = performance.now();
+<<<<<<< HEAD
       const duration = 1250;
+=======
+      const duration = 900;
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
       const targetW = targetDimsRef.current.width;
       const targetH = targetDimsRef.current.height;
 
@@ -75,14 +94,24 @@ export function ScreenshotHeading() {
         }
       };
       requestAnimationFrame(updateCounter);
+<<<<<<< HEAD
     }, 350);
 
     // Box completes opening after 1250ms transition (350ms + 1250ms = 1600ms)
+=======
+    }, 200);
+
+    // Box completes opening after 900ms transition
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
     const completeTimer = setTimeout(() => {
       setIsCompleted(true);
       // Start typewriter immediately after the box completely opens
       startTypewriter();
+<<<<<<< HEAD
     }, 1600);
+=======
+    }, 1150);
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
 
     return () => {
       clearTimeout(openTimer);
@@ -97,7 +126,11 @@ export function ScreenshotHeading() {
     setActiveLine(1);
     let count1 = 0;
 
+<<<<<<< HEAD
     // Type Line 1 ("Hi, Im") at a natural, readable pace (75ms/char)
+=======
+    // Type Line 1 ("Hi, Im")
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
     const timer1 = setInterval(() => {
       count1++;
       setTypedLine1(count1);
@@ -105,12 +138,20 @@ export function ScreenshotHeading() {
       if (count1 >= LINE_1.length) {
         clearInterval(timer1);
 
+<<<<<<< HEAD
         // Pause naturally before jumping to Line 2 (320ms)
+=======
+        // Pause naturally before jumping to Line 2
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
         setTimeout(() => {
           setActiveLine(2);
           let count2 = 0;
 
+<<<<<<< HEAD
           // Type Line 2 ("Darshan Ghatge.") at a smooth pace (68ms/char)
+=======
+          // Type Line 2 ("Darshan Ghatge.")
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
           const timer2 = setInterval(() => {
             count2++;
             setTypedLine2(count2);
@@ -120,17 +161,27 @@ export function ScreenshotHeading() {
               // Let cursor blink gently after completing then settle cleanly
               setTimeout(() => {
                 setIsTyping(false);
+<<<<<<< HEAD
               }, 1800);
             }
           }, 68);
         }, 320);
       }
     }, 75);
+=======
+              }, 1500);
+            }
+          }, 42);
+        }, 150);
+      }
+    }, 45);
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
   };
 
   useEffect(() => {
     // Reduced motion support
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+<<<<<<< HEAD
       const raf = requestAnimationFrame(() => {
         setIsOpened(true);
         setIsCompleted(true);
@@ -180,6 +231,17 @@ export function ScreenshotHeading() {
       };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
+=======
+      setIsOpened(true);
+      setIsCompleted(true);
+      setTypedLine1(LINE_1.length);
+      setTypedLine2(LINE_2.length);
+      return;
+    }
+
+    const cancel = runSequence();
+    return cancel;
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
   }, []);
 
   // Line 1 string breakdown ("Hi, " in white, "Im" in cyan)
@@ -195,16 +257,26 @@ export function ScreenshotHeading() {
       className="relative block w-fit mb-3 sm:mb-4 select-none group"
     >
       {/* ── Invisible Template: Locks exact height and 2-line layout without shifts ── */}
+<<<<<<< HEAD
       <div className="p-3 sm:p-5 opacity-0 pointer-events-none select-none aria-hidden:true">
         <h1 className="text-2xl min-[360px]:text-[1.75rem] min-[400px]:text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.15]">
+=======
+      <div className="p-4 sm:p-5 opacity-0 pointer-events-none select-none aria-hidden:true">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.15]">
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
           <div className="whitespace-nowrap flex items-center">Hi, Im</div>
           <div className="whitespace-nowrap flex items-center">Darshan Ghatge.</div>
         </h1>
       </div>
 
       {/* ── Visible Typewriter Layer ────────────────────────────────────────────── */}
+<<<<<<< HEAD
       <div className="absolute inset-0 p-3 sm:p-5 z-10 flex flex-col justify-center">
         <h1 className="text-2xl min-[360px]:text-[1.75rem] min-[400px]:text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.15]">
+=======
+      <div className="absolute inset-0 p-4 sm:p-5 z-10 flex flex-col justify-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.15]">
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
           {/* First Line: "Hi, Im" */}
           <div className="text-white whitespace-nowrap flex items-center min-h-[1.15em]">
             <span>{line1Prefix}</span>
@@ -238,6 +310,7 @@ export function ScreenshotHeading() {
 
       {/* ── GPU-Accelerated Expanding Snipping Box (Zero re-render lag) ─────────── */}
       <div
+<<<<<<< HEAD
         className={`absolute top-0 left-0 pointer-events-none transition-all duration-[1250ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpened ? "w-full h-full opacity-100" : "w-0 h-0 opacity-0"
           }`}
       >
@@ -247,14 +320,35 @@ export function ScreenshotHeading() {
             ? "border-blue-500/90 bg-blue-500/[0.04] shadow-[0_0_25px_rgba(59,130,246,0.18)]"
             : "border-blue-500 border-dashed bg-blue-500/[0.06] shadow-[0_0_15px_rgba(59,130,246,0.25)]"
             }`}
+=======
+        className={`absolute top-0 left-0 pointer-events-none transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          isOpened ? "w-full h-full opacity-100" : "w-0 h-0 opacity-0"
+        }`}
+      >
+        {/* Selection Box Border & Highlight Tint */}
+        <div
+          className={`w-full h-full border-2 rounded-sm transition-all duration-300 ${
+            isCompleted
+              ? "border-blue-500/90 bg-blue-500/[0.04] shadow-[0_0_25px_rgba(59,130,246,0.18)]"
+              : "border-blue-500 border-dashed bg-blue-500/[0.06] shadow-[0_0_15px_rgba(59,130,246,0.25)]"
+          }`}
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
         />
 
         {/* ── Dimension Badge ─────────────────────────────────────────────────── */}
         <div
+<<<<<<< HEAD
           className={`absolute font-mono text-[10px] font-semibold px-2 py-0.5 rounded shadow-md pointer-events-none tracking-wider select-none flex items-center gap-1 z-30 transition-all duration-300 ${isCompleted
             ? "-top-3.5 right-3 sm:right-5 bg-blue-500 text-white"
             : "-top-3.5 right-1 sm:right-2 bg-blue-600 text-white ring-1 ring-white/20 animate-pulse"
             }`}
+=======
+          className={`absolute font-mono text-[10px] font-semibold px-2 py-0.5 rounded shadow-md pointer-events-none tracking-wider select-none flex items-center gap-1 z-30 transition-all duration-300 ${
+            isCompleted
+              ? "-top-3.5 right-3 sm:right-5 bg-blue-500 text-white"
+              : "-top-3.5 right-1 sm:right-2 bg-blue-600 text-white ring-1 ring-white/20 animate-pulse"
+          }`}
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
         >
           <span ref={dimRef}>
             {isCompleted
@@ -282,6 +376,7 @@ export function ScreenshotHeading() {
 
         {/* ── Snipping Cursor & "Darshan" Name Tag ────────────────────────────── */}
         <div
+<<<<<<< HEAD
           className={`absolute flex items-start pointer-events-none z-40 transition-transform duration-200 ${isCompleted
             ? "-bottom-4 -right-3 sm:-bottom-5 sm:-right-4 group-hover:scale-110"
             : "-bottom-2 -right-2 scale-95"
@@ -291,6 +386,19 @@ export function ScreenshotHeading() {
           <svg
             className={`w-4 h-4 sm:w-5 sm:h-5 text-blue-500 drop-shadow-[0_2px_5px_rgba(0,0,0,0.6)] transform -rotate-12 translate-y-0.5 transition-all ${!isCompleted ? "scale-90 opacity-90" : "scale-100 opacity-100"
               }`}
+=======
+          className={`absolute flex items-start pointer-events-none z-40 transition-transform duration-200 ${
+            isCompleted
+              ? "-bottom-4 -right-3 sm:-bottom-5 sm:-right-4 group-hover:scale-110"
+              : "-bottom-2 -right-2 scale-95"
+          }`}
+        >
+          {/* Vector Pointer Arrow */}
+          <svg
+            className={`w-4 h-4 sm:w-5 sm:h-5 text-blue-500 drop-shadow-[0_2px_5px_rgba(0,0,0,0.6)] transform -rotate-12 translate-y-0.5 transition-all ${
+              !isCompleted ? "scale-90 opacity-90" : "scale-100 opacity-100"
+            }`}
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
             viewBox="0 0 24 24"
             fill="currentColor"
           >
@@ -299,10 +407,18 @@ export function ScreenshotHeading() {
 
           {/* User Name Badge */}
           <div
+<<<<<<< HEAD
             className={`bg-blue-500 text-white font-medium text-xs sm:text-[13px] px-2.5 py-0.5 rounded-r-md rounded-bl-md shadow-lg shadow-blue-500/30 flex items-center gap-1 -ml-1 transition-all duration-300 ${isCompleted
               ? "opacity-100 scale-100 translate-x-0"
               : "opacity-0 scale-75 -translate-x-2"
               }`}
+=======
+            className={`bg-blue-500 text-white font-medium text-xs sm:text-[13px] px-2.5 py-0.5 rounded-r-md rounded-bl-md shadow-lg shadow-blue-500/30 flex items-center gap-1 -ml-1 transition-all duration-300 ${
+              isCompleted
+                ? "opacity-100 scale-100 translate-x-0"
+                : "opacity-0 scale-75 -translate-x-2"
+            }`}
+>>>>>>> 793be5ff4c114adbd7f0d36875f7fd7aab48e540
           >
             <span></span>
           </div>
