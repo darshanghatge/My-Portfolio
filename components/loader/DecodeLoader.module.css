@@ -1,0 +1,113 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  background-color: #070b1f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.5s ease 0.7s;
+}
+
+.overlay.done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.contentBlock {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 20px;
+  opacity: 1;
+  transition: opacity 0.7s ease;
+}
+
+.overlay.done .contentBlock {
+  opacity: 0;
+}
+
+.name {
+  font-family: var(--font-mono), "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-weight: 700;
+  color: #22d3ee;
+  font-size: clamp(14px, 4.4vw, 26px);
+  letter-spacing: 0.12em;
+  white-space: pre;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.lineTrack {
+  position: relative;
+  height: 2px;
+  width: 100%;
+  background-color: rgba(34, 211, 238, 0.18);
+  overflow: visible;
+  transform-origin: center;
+  transition: transform 0.6s ease 0.1s;
+}
+
+.overlay.done .lineTrack {
+  transform: scaleX(0);
+}
+
+.lineFill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #22d3ee;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.star {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1;
+  text-shadow: 0 0 8px #22d3ee, 0 0 16px #22d3ee;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.2s ease;
+}
+
+.overlay.done .star {
+  opacity: 0;
+}
+
+.counter {
+  font-family: var(--font-mono), "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: #5fc5d6;
+  text-align: center;
+  line-height: 1;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star {
+    text-shadow: none !important;
+  }
+}
