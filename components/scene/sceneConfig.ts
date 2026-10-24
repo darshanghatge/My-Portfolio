@@ -96,39 +96,45 @@ export const sceneConfig: {
   },
   mobile: {
     hero: {
-      position: [0.72, 1.92, -1.35],
-      scale: 1.18,
-      twist: 1.5,
+      // Centered in viewport, balanced scale & breathing room
+      position: [0.0, 0.04, -0.2],
+      scale: 1.65,
+      twist: 1.7,
       lightAngle: 0.6,
     },
     about: {
-      position: [-0.65, 1.85, -1.35],
-      scale: 1.18,
-      twist: 1.5,
-      lightAngle: 1.2,
+      // Glides smoothly to the left, sun terminator shifts
+      position: [-0.32, 0.05, -0.22],
+      scale: 1.62,
+      twist: 2.1,
+      lightAngle: 2.2,
     },
     projects: {
-      position: [0.72, 1.85, -1.35],
-      scale: 1.18,
-      twist: 1.5,
-      lightAngle: 1.8,
+      // Glides smoothly to the right
+      position: [0.32, 0.05, -0.22],
+      scale: 1.62,
+      twist: 1.9,
+      lightAngle: 0.8,
     },
     skills: {
-      position: [0.0, 1.55, -1.45],
-      scale: 1.3,
-      twist: 1.5,
-      lightAngle: 2.4,
+      // Planetary backdrop: moves into deep space and expands, exactly like desktop
+      position: [0.0, 0.04, -0.65],
+      scale: 1.95,
+      twist: 2.3,
+      lightAngle: 1.5,
     },
     experience: {
-      position: [-0.65, 1.85, -1.35],
-      scale: 1.18,
-      twist: 1.5,
-      lightAngle: 0.2,
+      // Glides smoothly to the left
+      position: [-0.3, 0.05, -0.22],
+      scale: 1.62,
+      twist: 1.8,
+      lightAngle: 2.4,
     },
     contact: {
-      position: [0.65, 1.88, -1.35],
-      scale: 1.18,
-      twist: 1.5,
+      // Glides smoothly to the right framing the contact card
+      position: [0.3, 0.05, -0.2],
+      scale: 1.65,
+      twist: 2.0,
       lightAngle: 0.9,
     },
   },

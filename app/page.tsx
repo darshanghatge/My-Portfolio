@@ -148,11 +148,11 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen text-zinc-100">
-      {/* Top Floating Glass Navigation Header */}
-      <header className="sticky top-0 z-40 w-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between backdrop-blur-md bg-black/30 border-b border-white/5">
+      {/* Top Floating Glass Navigation Header - Fixed & Constant */}
+      <header className="fixed top-0 left-0 right-0 z-50 w-full h-14 sm:h-16 px-3 sm:px-6 flex items-center justify-between backdrop-blur-xl bg-[#030712]/80 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
         <button
           onClick={() => scrollTo("hero")}
-          className="flex items-center gap-3 shrink-0 group text-left cursor-pointer focus:outline-none"
+          className="flex items-center gap-2.5 sm:gap-3 shrink-0 group text-left cursor-pointer focus:outline-none"
           aria-label="Return to front page"
           title="Return to front page"
         >
@@ -176,15 +176,19 @@ export default function Home() {
           <SectionIndicator />
         </div>
 
-        <div className="hidden sm:flex items-center gap-3 shrink-0">
+        <div className="shrink-0 flex items-center justify-end">
           <button
             onClick={() => scrollTo("contact")}
-            className="px-4 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-cyan-300 border border-cyan-500/30 hover:border-cyan-400 hover:bg-cyan-500/30 transition-all duration-300 shadow-[0_0_15px_rgba(6,182,212,0.15)] cursor-pointer"
+            className="hidden sm:inline-flex px-4 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-cyan-300 border border-cyan-500/30 hover:border-cyan-400 hover:bg-cyan-500/30 transition-all duration-300 shadow-[0_0_15px_rgba(6,182,212,0.15)] cursor-pointer"
           >
             Let&apos;s Connect
           </button>
+          <div className="w-8 sm:hidden" aria-hidden="true" />
         </div>
       </header>
+
+      {/* Fixed Header Height Spacer */}
+      <div className="h-14 sm:h-16 w-full shrink-0" aria-hidden="true" />
 
       {/* SECTION 1: HERO */}
       <section
@@ -844,7 +848,7 @@ export default function Home() {
           </p>
 
           {/* Interactive Contact Form */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-black/40 border border-white/10 backdrop-blur-2xl text-left shadow-2xl shadow-cyan-950/20">
+          <div className="p-5 sm:p-8 rounded-3xl bg-black/40 border border-white/10 backdrop-blur-2xl text-left shadow-2xl shadow-cyan-950/20 overflow-hidden w-full max-w-full">
             {submitStatus === "success" ? (
               <div className="py-12 flex flex-col items-center justify-center text-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-emerald-500/20 border border-emerald-500 flex items-center justify-center text-emerald-400">
@@ -960,12 +964,12 @@ export default function Home() {
             )}
 
             {/* Social link shortcuts */}
-            <div className="flex items-center justify-center gap-6 pt-6 mt-6 border-t border-white/15 text-zinc-200 text-xs">
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 pt-5 mt-5 border-t border-white/15 text-zinc-200 text-xs w-full">
               <a
                 href="https://github.com/darshanghatge"
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-cyan-300 flex items-center gap-1.5 transition-colors text-zinc-200"
+                className="hover:text-cyan-300 flex items-center gap-1.5 transition-colors text-zinc-200 shrink-0"
               >
                 <GithubIcon className="w-4 h-4 text-zinc-300" />
                 <span className="text-zinc-200 hover:text-white">GitHub</span>
@@ -974,18 +978,20 @@ export default function Home() {
                 href="https://www.linkedin.com/in/darshan1909/"
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-cyan-300 flex items-center gap-1.5 transition-colors text-zinc-200"
+                className="hover:text-cyan-300 flex items-center gap-1.5 transition-colors text-zinc-200 shrink-0"
               >
                 <LinkedinIcon className="w-4 h-4 text-zinc-300" />
                 <span className="text-zinc-200 hover:text-white">LinkedIn</span>
               </a>
               <a
                 href="mailto:darshanghatge@gmail.com"
-                className="hover:text-cyan-300 flex items-center gap-1.5 transition-colors text-zinc-200"
+                className="hover:text-cyan-300 flex items-center gap-1.5 transition-colors text-zinc-200 max-w-full min-w-0"
                 title="Direct email: darshanghatge@gmail.com"
               >
-                <Mail className="w-4 h-4 text-zinc-300" />
-                <span className="text-zinc-200 hover:text-white font-mono">darshanghatge@gmail.com</span>
+                <Mail className="w-4 h-4 text-zinc-300 shrink-0" />
+                <span className="text-zinc-200 hover:text-white font-mono break-all sm:break-normal">
+                  darshanghatge@gmail.com
+                </span>
               </a>
             </div>
           </div>

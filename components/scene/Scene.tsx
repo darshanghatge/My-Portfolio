@@ -420,12 +420,9 @@ function World({
   const currentTwistRef = useRef(1.7);
   const currentLightAngleRef = useRef(0.6);
   const pointerRef = useRef({ x: 0, y: 0 });
-  const touchDeltaRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
-    let lastTouchX = 0;
-    let lastTouchY = 0;
 
     // Viewport center section detection
     const updateActiveSection = () => {
@@ -482,25 +479,34 @@ function World({
     };
     window.addEventListener("pointermove", onPointerMove, { passive: true });
 
-    // 4. Touch listeners for gentle drag tilt
+    // 4. Touch listeners for dynamic 3D touch parallax on mobile
     const onTouchStart = (e: TouchEvent) => {
       if (e.touches.length > 0) {
-        lastTouchX = e.touches[0].clientX;
-        lastTouchY = e.touches[0].clientY;
+        const curX = e.touches[0].clientX;
+        const curY = e.touches[0].clientY;
+        const halfW = window.innerWidth / 2;
+        const halfH = window.innerHeight / 2;
+        pointerRef.current.x = (curX - halfW) / halfW;
+        pointerRef.current.y = (curY - halfH) / halfH;
       }
     };
     const onTouchMove = (e: TouchEvent) => {
       if (e.touches.length > 0) {
         const curX = e.touches[0].clientX;
         const curY = e.touches[0].clientY;
-        touchDeltaRef.current.x = curX - lastTouchX;
-        touchDeltaRef.current.y = curY - lastTouchY;
-        lastTouchX = curX;
-        lastTouchY = curY;
+        const halfW = window.innerWidth / 2;
+        const halfH = window.innerHeight / 2;
+        pointerRef.current.x = (curX - halfW) / halfW;
+        pointerRef.current.y = (curY - halfH) / halfH;
       }
+    };
+    const onTouchEnd = () => {
+      pointerRef.current.x = 0;
+      pointerRef.current.y = 0;
     };
     window.addEventListener("touchstart", onTouchStart, { passive: true });
     window.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("touchend", onTouchEnd, { passive: true });
 
     // Initial evaluation
     updateActiveSection();
@@ -511,6 +517,7 @@ function World({
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
     };
   }, [isMobile]);
 
@@ -565,7 +572,7 @@ function World({
     ribbonShell.rotation.y += rotVelocityRef.current * 1.55 * delta;
 
     // 3. Twist dynamics: uTwist increases with scroll speed and relaxes back when stopped
-    const targetTwist = target.twist + (isMobile ? 0 : Math.abs(scrollImpulse) * 0.65);
+    const targetTwist = target.twist + Math.abs(scrollImpulse) * 0.65;
     currentTwistRef.current = THREE.MathUtils.damp(
       currentTwistRef.current,
       targetTwist,
@@ -613,28 +620,19 @@ function World({
     );
     systemGroup.scale.setScalar(currentScaleRef.current);
 
-    // 6. Pointer parallax tilt (desktop) & gentle touch drag tilt (mobile)
-    if (!isMobile) {
-      systemGroup.rotation.x = THREE.MathUtils.damp(
-        systemGroup.rotation.x,
-        0.18 + pointerRef.current.y * 0.25,
-        3.5,
-        delta
-      );
-      systemGroup.rotation.z = THREE.MathUtils.damp(
-        systemGroup.rotation.z,
-        -pointerRef.current.x * 0.22,
-        3.5,
-        delta
-      );
-    } else {
-      const touchTiltX = touchDeltaRef.current.y * 0.005;
-      const touchTiltZ = -touchDeltaRef.current.x * 0.005;
-      touchDeltaRef.current.x = 0;
-      touchDeltaRef.current.y = 0;
-      systemGroup.rotation.x = THREE.MathUtils.damp(systemGroup.rotation.x, 0.15 + touchTiltX, 3.0, delta);
-      systemGroup.rotation.z = THREE.MathUtils.damp(systemGroup.rotation.z, touchTiltZ, 3.0, delta);
-    }
+    // 6. Interactive 3D Parallax Tilt (Mouse cursor on desktop, touch drag on mobile)
+    systemGroup.rotation.x = THREE.MathUtils.damp(
+      systemGroup.rotation.x,
+      0.18 + pointerRef.current.y * 0.22,
+      3.5,
+      delta
+    );
+    systemGroup.rotation.z = THREE.MathUtils.damp(
+      systemGroup.rotation.z,
+      -pointerRef.current.x * 0.20,
+      3.5,
+      delta
+    );
 
     // 7. Time uniform accumulation for shaders
     timeAccumRef.current += delta * 0.5;
